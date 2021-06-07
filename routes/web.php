@@ -32,3 +32,7 @@ Route::group(['prefix' => 'source'], function(){
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/providers', function(){
+    return view('providers');
+});
