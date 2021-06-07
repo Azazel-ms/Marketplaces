@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+//Route::get('/sourceItems', [SourceController::class, 'itemSources'])->name('Source_items');
+
+Route::group(['prefix' => 'source'], function(){ 
+
+	Route::get(
+    	'items',
+    	[SourceController::class, 'itemSources']
+	)->name('Source_items');	
+
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
