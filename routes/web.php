@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProvidersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SourceController;
 
@@ -36,3 +37,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/providers', function(){
     return view('providers');
 });
+Route::post('/providers/send', [ProvidersController::class, 'formprovider']);

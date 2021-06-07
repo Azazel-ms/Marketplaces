@@ -15,7 +15,7 @@ class CreateSourceItemsTable extends Migration
     {
         Schema::create('source_items', function (Blueprint $table) {
             $table->id();
-            $table->string("source_providers");
+            $table->bigIncrements("source_providers_id");
             $table->text("json");
             $table->string("ean");
             $table->timestamps();

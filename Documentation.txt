@@ -1,4 +1,12 @@
 /************************************TABLAS MYSQL****************************************************************/
 
                                 /*********SOURCE_PROVIDER***************/
-La tabla Source provider posee todos los proveedores dentro de la pagina web y asi mismo tambien puede recibir 
+La tabla Source provider posee todos los proveedores de productos dentro de la pagina web y asi mismo tambien puede recibir la descripcion de los proovedores, el formulario que recibe los proveedores 
+
+
+                                /*********SOURCE_FIELDS***************/
+Source fields recibe los campos para compararlo con source_provider, esta tabla es para referenciar campos
+
+ /*********SOURCE_ITEMS***************/
+
+ Aqui es donde se recibe el json dentro de la pagina y se muestran los items que nosotros tenemos actualmente disponibles, desde esta tabla vamos a buscar el EAN para traer los datos para enviarlos hacia el marketplace, tambien se va a poder escribir dentro de esta tabla para 
