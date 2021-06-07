@@ -1,0 +1,4 @@
+/************************************TABLAS MYSQL****************************************************************/
+
+                                /*********SOURCE_PROVIDER***************/
+La tabla Source provider posee todos los proveedores dentro de la pagina web y asi mismo tambien puede recibir 
