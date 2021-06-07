@@ -15,7 +15,7 @@ class CreateMarketplaceFieldsTable extends Migration
     {
         Schema::create('marketplace_fields', function (Blueprint $table) {
             $table->id();
-            $table->bigIncrements("marketplace_id");
+            $table->bigInteger("marketplace_id");
             $table->string("name");
             $table->string("data_type");
             $table->string("data_long");

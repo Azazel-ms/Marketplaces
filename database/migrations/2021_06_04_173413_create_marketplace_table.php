@@ -17,7 +17,7 @@ class CreateMarketplaceTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string("name");
-            $table->bigIncrements("source_provider_id");
+            $table->bigInteger("source_provider_id");
         });
     }
 
