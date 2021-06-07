@@ -15,7 +15,7 @@ class CreateSourceFieldsTable extends Migration
     {
         Schema::create('source_fields', function (Blueprint $table) {
             $table->id();
-            $table->string("source_provider_id");
+            $table->bigIncrements("source_provider_id");
             $table->string("name");
             $table->string("data_type");
             $table->string("data_long");
