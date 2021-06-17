@@ -17,7 +17,7 @@ class CreateSourceProvidersTable extends Migration
             $table->id();
             $table->string("short_name");
             $table->string("name");
-            $table->string("nosotros");
+            $table->string("nosotros")->nullable();
             $table->timestamps();
         });
     }

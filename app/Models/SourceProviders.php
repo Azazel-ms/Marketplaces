@@ -15,4 +15,9 @@ class SourceProviders extends Model
         'name',
         'nosotros',
     ];
+
+     public function scopeProvider($query,$name)
+    {
+        return $query->where('name','LIKE',"%$name%");
+    }
 }

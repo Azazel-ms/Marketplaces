@@ -1,0 +1,48 @@
+@extends('layouts.base')
+
+@section('headers')
+@endsection
+
+@section('content')	
+	@if(session('alert_message'))
+		<div class="alert alert-{{ session('alert_class') }}" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			{{ session('alert_message') }}
+		</div>
+	@endif
+
+	<div class="container-fluid mt-5">
+		<div class="row">
+			<div class="col-12 offset-0 col-sm-8 offset-sm-2 col-md-6 offset-md-3 border border-bottom-0" style="min-height: 100vh !important;">
+				@include('layouts.layout-search',['title' => 'Source Items', 'route' => 'source.item.index'])
+				<div class="row">
+					@foreach ($data as $key => $d)
+						<div class="col-12 py-3 border-top @if($loop->last){{ 'border-bottom'}}@endif">
+							<div class="row h-100 align-items-center">
+								<div class="col-2">
+									IMG
+								</div>
+
+								<div class="col-8">
+									<p class="m-0" style="font-size: 1rem; font-weight: 500;">{{ $d->ean }}</p>
+									<p class="m-0 text-secondary" style="font-size: .7rem; font-weight: 700;">{{ $d->provider->name}}</p>
+								</div>
+								<div class="col-2 text-end">
+									<i class="fas fa-chevron-right text-secondary"></i>
+								</div>
+							</div>
+						</div>						
+					@endforeach
+					<div class="col-12">
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+@endsection
+
+@section('scripts')
+@endsection
