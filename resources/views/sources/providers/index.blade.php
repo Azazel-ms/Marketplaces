@@ -108,6 +108,7 @@
 @endif
 
 <script>
+    modald();
     var mod = document.getElementById("target-mod");
     mod.setAttribute("onclick", "modald()");
 function modald() {

@@ -1,6 +1,6 @@
 <ul class="pc-navbar">
 	<li class="pc-item">
-		<a href="/" class="pc-link "><span class="pc-micon"><i class="fa fa-home px-1"></i></span><span class="pc-mtext">Inicio</span></a>
+		<a href="/home" class="pc-link "><span class="pc-micon"><i class="fa fa-home px-1"></i></span><span class="pc-mtext">Inicio</span></a>
 	</li>
 	<li class="pc-item pc-caption">
 		<label>Proveedores</label>

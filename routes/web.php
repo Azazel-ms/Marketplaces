@@ -34,9 +34,9 @@ Route::group(['prefix' => 'source','middleware' => 'auth'], function(){
 });
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('layouts.base');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
+    return view('sources.home.index');
+})->name('home');
 
 Route::get('providers', function(){
     return view('providers');

@@ -81,7 +81,7 @@
 							<div class=" dropdown-header">
 								<h5 class="text-overflow m-0"><span class="badge bg-light-success">Pro</span></h5>
 							</div>
-							<a href="" class="dropdown-item">
+							<a href="{{ route('profile.show') }}" class="dropdown-item">
 								<i class="fa fa-user-circle"></i>
 								<span>Profile</span>
 							</a>

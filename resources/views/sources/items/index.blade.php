@@ -10,12 +10,15 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
+                            
                         	@foreach ($data as $key => $d)
-                            <li class="list-group-item d-flex justify-content-between">
-                                <p class="m-0" style="font-size: 1rem; font-weight: 500;">{{ $d->ean }}</p>
-								<p class="m-0 text-secondary" style="font-size: .7rem; font-weight: 700;">{{ $d->provider->name}}</p>
-                                <i class="fas fa-chevron-right text-secondary"></i>
-                            </li>                            
+                            @if ($d->provider == true)
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <p class="m-0" style="font-size: 1rem; font-weight: 500;">{{ $d->ean }}</p>
+                                    <p class="m-0 text-secondary" style="font-size: .7rem; font-weight: 700;">{{ $d->provider->name}}</p>
+                                    <i class="fas fa-chevron-right text-secondary"></i>
+                                </li>                   
+                            @endif
                             @endforeach
                         </ul>
                     </div>
@@ -42,7 +45,7 @@
                         <div class="col-12 col-sm-8 col-md-6">
                             <div class="row">
                                 <div class="col-12">
-                                    <form class="" action="{{ route('source.item.create') }}" method="POST">
+                                    <form class="" action="{{ route('source.item.create') }}" autocomplete="off" method="POST">
                                         @csrf
                                         <div class="form-group">
                                                 <label class="form-label" >Codigo de barras</label>
