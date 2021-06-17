@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ProvidersController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SourceController;
+use App\Http\Controllers\SourceItemController;
+use App\Http\Controllers\SourceProviderController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,25 +18,27 @@ use App\Http\Controllers\SourceController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.base');
 });
 
 //Route::get('/sourceItems', [SourceController::class, 'itemSources'])->name('Source_items');
 
-Route::group(['prefix' => 'source'], function(){ 
-
-	Route::get(
-    	'items',
-    	[SourceController::class, 'itemSources']
-	)->name('Source_items');	
-
+Route::group(['prefix' => 'source','middleware' => 'auth'], function(){ 
+	Route::get('item/',[SourceItemController::class, 'view'])->name('source.item');	
+	Route::get('item/index',[SourceItemController::class, 'index'])->name('source.item.index');	
+	Route::post('item/create',[SourceItemController::class, 'create'])->name('source.item.create');	
+	Route::get('provider/index',[SourceProviderController::class, 'index'])->name('source.provider.index');
+	Route::post('provider/crete',[SourceProviderController::class, 'create'])->name('source.provider.create');
+	Route::put('provider/update/{id}',[SourceProviderController::class, 'update'])->name('source.provider.update');
+	Route::get('provider/delete/{id}',[SourceProviderController::class, 'delete'])->name('source.provider.delete');
 });
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('layouts.base');
 })->name('dashboard');
 
 Route::get('providers', function(){
     return view('providers');
 });
-Route::post('registerprovider', [ProvidersController::class, 'registerprovider'])->name('registerprovider');
+
