@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\ProvidersController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SourceFieldsController;
 use App\Http\Controllers\SourceItemController;
 use App\Http\Controllers\SourceProviderController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -24,21 +24,24 @@ Route::get('/', function () {
 //Route::get('/sourceItems', [SourceController::class, 'itemSources'])->name('Source_items');
 
 Route::group(['prefix' => 'source','middleware' => 'auth'], function(){ 
-	Route::get('item/',[SourceItemController::class, 'view'])->name('source.item');	
-	Route::get('item/index',[SourceItemController::class, 'index'])->name('source.item.index');	
+	/*Vistas*/
+	Route::get('item',[SourceItemController::class, 'index'])->name('source.item.index');	
+	Route::get('provider',[SourceProviderController::class, 'index'])->name('source.provider.index');
+	Route::get('fields',[SourceFieldsController::class, 'index'])->name('source.fields.index');
+	/*Agregar*/
+	Route::post('provider/create',[SourceProviderController::class, 'create'])->name('source.provider.create');
 	Route::post('item/create',[SourceItemController::class, 'create'])->name('source.item.create');	
-	Route::get('provider/index',[SourceProviderController::class, 'index'])->name('source.provider.index');
-	Route::post('provider/crete',[SourceProviderController::class, 'create'])->name('source.provider.create');
-	Route::put('provider/update/{id}',[SourceProviderController::class, 'update'])->name('source.provider.update');
+
+	/*Eliminar*/
 	Route::get('provider/delete/{id}',[SourceProviderController::class, 'delete'])->name('source.provider.delete');
+	
+	/*Editar*/
+	Route::put('provider/update/{id}',[SourceProviderController::class, 'update'])->name('source.provider.update');
+
 });
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
     return view('sources.home.index');
 })->name('home');
-
-Route::get('providers', function(){
-    return view('providers');
-});
 

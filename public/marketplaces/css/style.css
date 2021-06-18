@@ -13,6 +13,13 @@ File: style.css
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ input[type=number]::-webkit-inner-spin-button, 
+ input[type=number]::-webkit-outer-spin-button { 
+   -webkit-appearance: none; 
+   margin: 0; 
+ }
+ input[type=number] { -moz-appearance:textfield; }
+ 
 :root {
     --bs-blue: #7267EF;
     --bs-indigo: #6610f2;

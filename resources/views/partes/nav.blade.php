@@ -13,7 +13,11 @@
 	</li>		
 	<li class="pc-item">
 		<a href="{{ route('source.item.index') }}" class="pc-link "><span class="pc-micon"><i class="fa fa-list px-2"></i></span><span class="pc-mtext">Listado de items</span></a>
-	</li>
-
-							
+	</li>							
+	<li class="pc-item pc-caption">
+		<label>Fields</label>
+	</li>		
+	<li class="pc-item">
+		<a href="{{ route('source.fields.index') }}" class="pc-link "><span class="pc-micon"><i class="fa fa-list px-2"></i></span><span class="pc-mtext">Fields</span></a>
+	</li>							
 </ul>

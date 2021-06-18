@@ -177,7 +177,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
 
-        App\Providers\EncryptFunctionsServiceProvider::class,    
+        App\Providers\EncryptFunctionsServiceProvider::class,
         Brian2694\Toastr\ToastrServiceProvider::class,    
 
     ],
@@ -233,7 +233,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Encrypt' => App\Helpers\EncryptFunctions::class,
-
     ],
 
 ];

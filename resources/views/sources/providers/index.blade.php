@@ -19,14 +19,14 @@
                     <div class="card-body">
                         <ul class="list-group">
                             @foreach ($data as $key => $d)  
-                            <li class="list-group-item d-flex justify-content-between">
-                                <p id="{{$d->id}}name" class="m-auto col-8" style="font-size: 1rem; font-weight: 500;">{{ $d->name }}</p>
-                                <input id="{{$d->id}}" type="hidden" class="m-0 col-8" style="font-size: 1rem; font-weight: 500;" value="{{ $d->name }}">
-                                <input id="{{$d->id}}-Short" type="hidden" class="m-0 col-8" style="font-size: 1rem; font-weight: 500;" value="{{ $d->short_name }}">
-                                <div class="col-4 flex-row-reverse d-inline-flex">                               
-                                    <button class="btn btn-light m-1 p-sm-2 p-lg-2" onclick="confirmation({{$d->id}})" data-bs-toggle="modal" data-bs-target="#ConfirmationModal"><i class="fa fa-trash-alt fs-5 px-1"></i></button>                                                                    
-                                    <button class="btn btn-light m-1 p-sm-2 p-lg-2" onclick="formeditprovider({{$d->id}})" data-bs-toggle="modal" data-bs-target="#modalMC"><i class="fa fa-edit fs-5 px-1"></i></button>
-                                </div>
+                            <li class="list-group-item d-md-flex d-block justify-content-between">
+                                    <p id="{{$d->id}}name" class="m-auto col-md-8 col-12 text-center text-md-start fs-4" style="font-size: 1rem; font-weight: 500;">{{ $d->name }}</p>
+                                    <input id="{{$d->id}}" type="hidden" class="m-0 col-8" style="font-size: 1rem; font-weight: 500;" value="{{ $d->name }}">
+                                    <input id="{{$d->id}}-Short" type="hidden" class="m-0 col-8" style="font-size: 1rem; font-weight: 500;" value="{{ $d->short_name }}">
+                                    <div class="col-12 col-md-4 text-center flex-row-reverse d-inline-flex">                               
+                                        <button class="btn btn-light m-1 p-sm-2 p-lg-2 col-6 col-md-3" onclick="confirmation({{$d->id}})" data-bs-toggle="modal" data-bs-target="#ConfirmationModal"><i class="fa fa-trash-alt fs-5 px-1"></i></button>                                                                    
+                                        <button class="btn btn-light m-1 p-sm-2 p-lg-2 col-6 col-md-3" onclick="formeditprovider({{$d->id}})" data-bs-toggle="modal" data-bs-target="#modalMC"><i class="fa fa-edit fs-5 px-1"></i></button>
+                                    </div>
                             </li>                             
                             @endforeach                            
                         </ul>
@@ -75,7 +75,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ConfirmationModalLabel">¿Desea eliminar este proovedor?</h5>
+                    <h5 class="modal-title" id="ConfirmationModalLabel">¿Desea eliminar este proveedor?</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-footer">

@@ -2,6 +2,9 @@
 <html lang="es">
 <head>
     <title>MercadoControl</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 	<link rel="stylesheet" href="{{ asset('marketplaces/fonts/feather.css') }}">
@@ -9,9 +12,9 @@
     <link rel="stylesheet" href="{{ asset('marketplaces/fonts/material.css') }}">
     <link rel="stylesheet" href="{{ asset('marketplaces/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('marketplaces/css/customizer.css') }}">    
-     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
 </head>
-<body class="">
+<body class="">                 
 	<div class="loader-bg">
 		<div class="loader-track">
 			<div class="loader-fill"></div>
@@ -55,7 +58,6 @@
 			@if (auth()->check())
 			<div class="ms-auto">
 				<ul class="list-unstyled">
-					
 					<li class="dropdown pc-h-item">
 						<a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
 							<i class="fa fa-search"></i>
@@ -99,19 +101,15 @@
 	
 	@yield('modal')
 	
-	<div class="pc-container">		
+	<div class="pc-container">	
 	    <div class="pcoded-content">
 	    	@if (auth()->check())
 	        <div class="row">
 	            <div class="col-xl-12 col-md-12">
 	                <div class="card feed-card">	                   
 	                    <div class="feed-scroll" style="">
-	                        <div class="card-body">
-	                            <div class="row m-b-25 align-items-center">
-	                                <div class="col">	                                    
-										@yield('content')	                                        
-	                                </div>
-	                            </div>                                                       
+	                        <div class="card-body">                                    
+								@yield('content')	                                                   
 	                        </div>
 	                    </div>
 	                </div>
@@ -124,10 +122,10 @@
 	    </div>
 	</div>	
 
-    <script src="{{asset('marketplaces/js/vendor-all.min.js')}}"></script>
+	<script src="{{asset('marketplaces/js/vendor-all.min.js')}}"></script>
     <script src="{{asset('marketplaces/js/plugins/bootstrap.min.js')}}"></script>
     <script src="{{asset('marketplaces/js/plugins/feather.min.js')}}"></script> 
-    <script src="{{asset('marketplaces/js/pcoded.min.js')}}"></script>    	   	
+    <script src="{{asset('marketplaces/js/pcoded.min.js')}}"></script>	   
 	@yield('scripts')
 </body>
 </html>

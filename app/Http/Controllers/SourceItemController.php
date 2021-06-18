@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SourceFields;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\SourceItems;
@@ -17,11 +18,6 @@ class SourceItemController extends Controller
 		
 	}
 
-	public function view()
-	{
-		return view('layouts.base');
-	}
-
 	public function index(Request $request)
 	{		
 		$data = SourceItems::Item($request->search)->get();		
@@ -30,10 +26,10 @@ class SourceItemController extends Controller
 
 	public function create(Request $request)
 	{		
-		$validate = $this->validate($request,[
+		/* $validate = $this->validate($request,[
             'barcode' => 'required|max:13|min:12',            
 			]
-		);
+		); */
 
 		if (SourceItems::where('ean', '=',$request->barcode)->exists()) {
 			\Toastr::error('Este registro ya se encuentra en la base de datos','Items');
@@ -45,6 +41,24 @@ class SourceItemController extends Controller
 
 		if ($response->httpCode == 200) {
 			$json=$response->body->data->GeneralInfo;
+			$json = json_encode($json);
+			$json = json_decode($json, true);
+			//$json = array_keys($json);
+
+			//$fields = new SourceFields();
+			//$v = count($json);
+			//$myArray = $json;
+		    //$arrayKeys = recursive1($myArray);
+			
+			/* for ($i = 0; $i < $p  ;$i++){
+				$fields->source_provider_id = "1";
+				$fields->name = $json[$i];
+				$fields->data_type = "text";
+				$fields->data_long = "500" ;
+				$fields->description = "null" ;
+				$fields->save();	
+			} */	
+	
 			$item = new SourceItems();
 			$item->source_providers_id='1';
 			$item->json = json_encode($json);
@@ -58,7 +72,7 @@ class SourceItemController extends Controller
 		\Toastr::warning('Registro no encontrado en Icecat','Items');
 			return redirect()->route('source.item.index');
 
-	}
+	}	
 
 	public function update()
 	{
