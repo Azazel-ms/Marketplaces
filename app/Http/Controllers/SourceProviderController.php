@@ -48,7 +48,6 @@ class SourceProviderController extends Controller
 				'name' => 'required|unique:App\Models\SourceProviders,name,'. $id . ',id'
 				]
 			);		
-
 		SourceProviders::where('id','=',$id)->update(['name' => $request->name, 'short_name' => $request->short_name]);
 		\Toastr::success('Se modificó correctamente','Proveedores');
 		return Redirect::back();

@@ -90,6 +90,7 @@
 @section('scripts')
 
 @if (count($errors)>0)
+{!! Toastr::error("No se pudo completar la acción revisa que el formulario no tenga errores") !!}
     <script type="text/javascript">
         window.onload = function() {
             dash = "{{old('ide')}}" ;
@@ -103,7 +104,6 @@
     </script>
     <script type="text/javascript"> 
         var myModal = new bootstrap.Modal(document.getElementById('modalMC'));
-        //myModal.show();
     </script>
 @endif
 
@@ -111,6 +111,7 @@
     modald();
     var mod = document.getElementById("target-mod");
     mod.setAttribute("onclick", "modald()");
+
 function modald() {
     document.getElementById("formulario-modal").innerHTML=`
     <form onsubmit="validationjs()" action="{{ route('source.provider.create') }}" method="POST" autocomplete="off">
@@ -171,6 +172,7 @@ function confirmation(aidi){
 function validationjs(){
     var shortV = document.getElementById("short_name")
     var nameV = document.getElementById("name")
+    var body = document.getElementsByTagName("body")
     var error = document.getElementById("errors")
     var error2 = document.getElementById("errors2")    
 

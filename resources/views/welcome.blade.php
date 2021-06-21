@@ -137,8 +137,6 @@
     <script src="{{asset('marketplaces/js/plugins/bootstrap.min.js')}}"></script>
     <script src="{{asset('marketplaces/js/plugins/feather.min.js')}}"></script>
     <script src="{{asset('marketplaces/js/pcoded.min.js')}}"></script>    
-  <script src="{{asset('marketplaces/js/plugins/apexcharts.min.js')}}"></script>
-  <script src="{{asset('marketplaces/js/pages/dashboard-sale.js')}}"></script>
   @yield('scripts')
 </body>
 </html>

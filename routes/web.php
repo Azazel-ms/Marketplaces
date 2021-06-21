@@ -33,10 +33,10 @@ Route::group(['prefix' => 'source','middleware' => 'auth'], function(){
 	Route::post('item/create',[SourceItemController::class, 'create'])->name('source.item.create');	
 
 	/*Eliminar*/
-	Route::get('provider/delete/{id}',[SourceProviderController::class, 'delete'])->name('source.provider.delete');
+	Route::get('delete/{id}',[SourceProviderController::class, 'delete'])->name('source.provider.delete');
 	
 	/*Editar*/
-	Route::put('provider/update/{id}',[SourceProviderController::class, 'update'])->name('source.provider.update');
+	Route::put('update/{id}',[SourceProviderController::class, 'update'])->name('source.provider.update');
 
 });
 
