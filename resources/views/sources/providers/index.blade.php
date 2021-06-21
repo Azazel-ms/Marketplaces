@@ -1,5 +1,5 @@
 @extends('layouts.base')
-
+@section('content')
 <div class="row">
     <div class="col-12 d-none">
         @if(count($errors) > 0)

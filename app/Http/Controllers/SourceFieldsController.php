@@ -14,5 +14,5 @@ class SourceFieldsController extends Controller
         //$json = SourceItems::find("1");
         //dd($json);
         return view ("sources.fields.index");
-    }
+    } 
 }

@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\SourceFields;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Redirect;
 use App\Models\SourceItems;
 use App\Models\SourceProviders;
 use Validator;
 use Illuminate\Support\Facades\View;
 use App\Helpers\SourceFieldFunctions;
-use App\Models\SourceFields;
 
 class SourceItemController extends Controller
 {
@@ -28,10 +28,10 @@ class SourceItemController extends Controller
 
 	public function create(Request $request)
 	{		
-		/* $validate = $this->validate($request,[
-            'barcode' => 'required|max:13|min:12',            
+		 $validate = $this->validate($request,[
+            'barcode' => 'required|max:52|min:8',            
 			]
-		); */
+		); 
 
 		if (SourceItems::where('ean', '=',$request->barcode)->exists()) {
 			\Toastr::error('Este registro ya se encuentra en la base de datos','Items');
@@ -56,7 +56,7 @@ class SourceItemController extends Controller
 		}
 
 		\Toastr::warning('Registro no encontrado en Icecat','Items');
-			return redirect()->route('source.item.index');
+			return Redirect::back();
 
 	}	
 
@@ -96,14 +96,12 @@ class SourceItemController extends Controller
 		$response = \SourceField::recursive($array);
 		foreach ($response as $value) {
 			if (SourceFields::where('name', '=',$value)->exists()) {				
-			}else{
+			}else {
 				$fields = new SourceFields();
 				$fields -> source_provider_id = 1;
-				$fields -> name = $value;
 				$fields->save();
 			}
-		}		
+		}
 	}
-
 }
 
