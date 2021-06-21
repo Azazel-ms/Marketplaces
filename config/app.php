@@ -178,6 +178,7 @@ return [
         App\Providers\JetstreamServiceProvider::class,
 
         App\Providers\EncryptFunctionsServiceProvider::class,
+        App\Providers\SourceFieldServiceProvider::class,
         Brian2694\Toastr\ToastrServiceProvider::class,    
 
     ],
@@ -233,6 +234,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Encrypt' => App\Helpers\EncryptFunctions::class,
+        'SourceField' => App\Helpers\SourceFieldFunctions::class,
+
+
     ],
 
 ];

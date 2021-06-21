@@ -18,6 +18,6 @@ class SourceProviders extends Model
 
      public function scopeProvider($query,$name)
     {
-        return $query->where('name','LIKE',"%$name%");
+        return $query->where('name','LIKE',"%$name%")->orWhere('short_name','LIKE',"%$name%");
     }
 }

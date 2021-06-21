@@ -9,6 +9,8 @@ use App\Models\SourceItems;
 use App\Models\SourceProviders;
 use Validator;
 use Illuminate\Support\Facades\View;
+use App\Helpers\SourceFieldFunctions;
+use App\Models\SourceFields;
 
 class SourceItemController extends Controller
 {
@@ -34,31 +36,15 @@ class SourceItemController extends Controller
 		if (SourceItems::where('ean', '=',$request->barcode)->exists()) {
 			\Toastr::error('Este registro ya se encuentra en la base de datos','Items');
 			return redirect()->route('source.item.index');
-		}		
+		}
 
-		$response = $this->curl('http://live.icecat.biz/api/?UserName=alekzleon&Language=en&GTIN='.$request->barcode);
-
+		$response = $this->curl('http://live.icecat.biz/api/?UserName=alekzleon&Language=en&GTIN='.$request->barcode);		
 
 		if ($response->httpCode == 200) {
-			$json=$response->body->data->GeneralInfo;
-			$json = json_encode($json);
-			$json = json_decode($json, true);
-			//$json = array_keys($json);
 
-			//$fields = new SourceFields();
-			//$v = count($json);
-			//$myArray = $json;
-		    //$arrayKeys = recursive1($myArray);
-			
-			/* for ($i = 0; $i < $p  ;$i++){
-				$fields->source_provider_id = "1";
-				$fields->name = $json[$i];
-				$fields->data_type = "text";
-				$fields->data_long = "500" ;
-				$fields->description = "null" ;
-				$fields->save();	
-			} */	
-	
+			$nodeJson = $this->recursiveJson($response->body->data->GeneralInfo);		
+
+			$json=$response->body->data;
 			$item = new SourceItems();
 			$item->source_providers_id='1';
 			$item->json = json_encode($json);
@@ -105,4 +91,19 @@ class SourceItemController extends Controller
 		return $return;
 	}
 
+	public function recursiveJson($array = [])
+	{
+		$response = \SourceField::recursive($array);
+		foreach ($response as $value) {
+			if (SourceFields::where('name', '=',$value)->exists()) {				
+			}else{
+				$fields = new SourceFields();
+				$fields -> source_provider_id = 1;
+				$fields -> name = $value;
+				$fields->save();
+			}
+		}		
+	}
+
 }
+

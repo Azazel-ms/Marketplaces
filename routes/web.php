@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SourceFieldsController;
 use App\Http\Controllers\SourceItemController;
 use App\Http\Controllers\SourceProviderController;
+use App\Http\Controllers\MarketPlacesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +35,6 @@ Route::group(['prefix' => 'source','middleware' => 'auth'], function(){
 	/*Agregar*/
 	Route::post('provider/create',[SourceProviderController::class, 'create'])->name('source.provider.create');
 	Route::post('item/create',[SourceItemController::class, 'create'])->name('source.item.create');	
-	Route::get('marketplaces',[SourceFieldsController::class, 'index'])->name('source.marketplaces.index');
 	
 	/*Eliminar*/
 	Route::get('delete/{id}',[SourceProviderController::class, 'delete'])->name('source.provider.delete');
@@ -41,6 +42,9 @@ Route::group(['prefix' => 'source','middleware' => 'auth'], function(){
 	/*Editar*/
 	Route::put('update/{id}',[SourceProviderController::class, 'update'])->name('source.provider.update');
 
+	/*Nose*/
+	Route::get('marketplace/index',[MarketPlacesController::class, 'index'])->name('marketplaces.index');
+	Route::get('marketplace/recursive',[SourceItemController::class, 'recursiveJson'])->name('item.recursiveJson');
 });
 
 
