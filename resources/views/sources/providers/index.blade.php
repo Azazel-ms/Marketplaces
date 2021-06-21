@@ -169,6 +169,7 @@ function formeditprovider(ide){
 function confirmation(aidi){
     document.getElementById("confirm-modal-a").setAttribute("href", "delete/" + aidi);
 }
+
 function validationjs(){
     var shortV = document.getElementById("short_name")
     var nameV = document.getElementById("name")
@@ -194,6 +195,17 @@ function validationjs(){
 }
 
 </script>
+
+<script>
+    //Scrollbar
+    window.onload=function(){
+    var pos=window.name || 0;
+    window.scrollTo(0,pos);
+    }
+    window.onunload=function(){
+    window.name=self.pageYOffset || (document.documentElement.scrollTop+document.body.scrollTop);
+    }
+    </script>
 
 <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>

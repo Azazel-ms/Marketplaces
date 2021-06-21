@@ -28,10 +28,13 @@ Route::group(['prefix' => 'source','middleware' => 'auth'], function(){
 	Route::get('item',[SourceItemController::class, 'index'])->name('source.item.index');	
 	Route::get('provider',[SourceProviderController::class, 'index'])->name('source.provider.index');
 	Route::get('fields',[SourceFieldsController::class, 'index'])->name('source.fields.index');
+	Route::get('marketplaces',[SourceFieldsController::class, 'index'])->name('source.marketplaces.index');
+	
 	/*Agregar*/
 	Route::post('provider/create',[SourceProviderController::class, 'create'])->name('source.provider.create');
 	Route::post('item/create',[SourceItemController::class, 'create'])->name('source.item.create');	
-
+	Route::get('marketplaces',[SourceFieldsController::class, 'index'])->name('source.marketplaces.index');
+	
 	/*Eliminar*/
 	Route::get('delete/{id}',[SourceProviderController::class, 'delete'])->name('source.provider.delete');
 	

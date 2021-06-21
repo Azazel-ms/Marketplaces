@@ -17,9 +17,8 @@ class SourceProviderController extends Controller
 
 	public function index(Request $request)
 	{				
-		$data = SourceProviders::Provider($request->search)->paginate(5);		
-		$vali = 0;		
-		return view("sources.providers.index")->with(['data' => $data, 'vali' => $vali]);
+		$data = SourceProviders::Provider($request->search)->paginate(25);		
+		return view("sources.providers.index")->with(['data' => $data]);
 	}	
 
 	public function create(Request $request)
@@ -35,9 +34,8 @@ class SourceProviderController extends Controller
 		$list -> short_name = $request->short_name;
 		$list -> name = $request->name;
 		$list -> save();
-		$vali = "create";
 		\Toastr::success('Registro guardado correctamente','Proveedores');
-		return redirect()->route('source.provider.index')->with($vali);
+		return redirect()->route('source.provider.index');
 	}
 
 
